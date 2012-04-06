@@ -1,4 +1,4 @@
-require 'gapps_openid'
+#require 'gapps_openid'
 
 class GoogleAppsController < AccountController
 
