@@ -16,9 +16,15 @@ Install
 
 Clone the plugin source code into your Redmine's plugin directory.
 
-    git clone git://github.com/waj/redmine_google_apps.git vendor/plugins/google_apps
+* Redmine 1.x
 
-**NOTE:** Make sure the plugin directory is name `google_apps`.
+    git clone git://github.com/waj/redmine_google_apps.git vendor/plugins/redmine_google_apps
+
+* Redmine 2.x
+
+    git clone git://github.com/waj/redmine_google_apps.git plugins/redmine_google_apps
+    bundle install --without development test
+
 
 Install the required gems:
 
