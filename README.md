@@ -37,3 +37,10 @@ Setup
 Login with your administrator account, go to the Administration section and now you should see the 'Google Apps' link. Add your Google Apps domain like 'example.com'. (Note, it's not www.example.com).
 
 Logout and go to the login page again. Now a link to login with your Google Apps domain should be visible.
+
+Setting Up Your Domain for OpenID
+---------------------------------
+
+Follow the instructions here:
+
+http://jeremiahlee.com/blog/2009/09/28/how-to-setup-openid-with-google-apps/
