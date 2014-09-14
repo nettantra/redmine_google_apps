@@ -9,15 +9,16 @@ class GoogleAppsController < AccountController
   AX_LAST = 'http://axschema.org/namePerson/last'
 
   def login
-    domain = GoogleAppsAuthSource.find params[:domain]
+    domain = GoogleAppsAuthSource.find params[:ga_domain]
     oid = "https://www.google.com/accounts/o8/site-xrds?hd=#{domain.name}"
     attributes = [AX_EMAIL, AX_FIRST, AX_LAST]
 
     authenticate_with_open_id(oid, :return_to => request.url, :required => attributes) do |result, identity_url, profile_data|
       if result.successful?
-        email = profile_data[AX_EMAIL].first
-        first = profile_data[AX_FIRST].first
-        last = profile_data[AX_LAST].first
+        ax_response = OpenID::AX::FetchResponse.from_success_response(request.env[Rack::OpenID::RESPONSE])
+        email = ax_response[AX_EMAIL].first
+        first = ax_response[AX_FIRST].first
+        last = ax_response[AX_LAST].first
 
         user = domain.users.find_by_mail email
         if user.nil?
@@ -50,13 +51,13 @@ class GoogleAppsController < AccountController
 
   def add
     if request.post?
-      GoogleAppsAuthSource.create! params[:domain]
+      GoogleAppsAuthSource.create! params[:ga_domain]
       redirect_to :action => :admin
     end
   end
 
   def delete
-    GoogleAppsAuthSource.delete_all :name => params[:domain]
+    GoogleAppsAuthSource.delete_all :name => params[:ga_domain]
     redirect_to :action => :admin
   end
 

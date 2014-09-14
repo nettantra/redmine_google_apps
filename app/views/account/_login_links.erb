@@ -1,8 +1,8 @@
 <div class="google-apps-login-links">
-  <% GoogleAppsAuthSource.all.each do |domain| -%>
+  <% GoogleAppsAuthSource.all.each do |domain| %>
   <div class="google-apps-login">
     <%= image_tag 'apps-16.png', :plugin => 'google_apps' %>
-    <%= link_to "Login with <b>#{domain.name}</b> account", :controller => "google_apps", :action => "login", :domain => domain.id %>
+    <%= link_to raw(l(:label_login_with_google_apps, :domain_name => domain.name)), :controller => "google_apps", :action => "login", :ga_domain => domain.id %>
   </div>
-  <% end -%>
+  <% end %>
 </div>
