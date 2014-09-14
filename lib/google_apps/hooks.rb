@@ -5,7 +5,7 @@ module GoogleApps
               :partial => 'login_links'
 
     def view_layouts_base_html_head(context)
-      stylesheet_link_tag 'style', :plugin => :google_apps
+      stylesheet_link_tag 'style', :plugin => :redmine_google_apps
     end
   end
 end
